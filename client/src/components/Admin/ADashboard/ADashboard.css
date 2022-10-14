@@ -1,0 +1,21 @@
+.ADashboard {
+  
+    display: flex;
+}
+
+.adminnav{
+  position: sticky;
+  top: 0;
+ 
+}
+
+.Asidenav {
+flex: 1.1;
+}
+
+.outlet {
+  
+  flex:6;
+ 
+    
+}

@@ -1,0 +1,52 @@
+.Dlogin{
+    background-color: whitesmoke;
+   
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dlcont{
+display: flex;
+
+width: 70vw;
+
+}
+
+.loginimg{
+    width: 600px;
+    background-color: white;
+   
+}
+
+.dlpassword,.dlemail,.dlusername{
+
+    width: 100%;
+    height: 60px;
+    margin: 10px 0;
+}
+
+.dlpassword input,.dlemail input,.dlusername input{
+    background-color: #004c6c;
+    width: 100%;
+    outline: none;
+    height: 100%;
+    color:gray;
+    font-size: 1.1rem;
+  
+    
+}
+
+.sidetwo{
+    width: 80%;
+}
+
+.dlsubmit{
+    height: 50px;
+    width: 100%;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+}
