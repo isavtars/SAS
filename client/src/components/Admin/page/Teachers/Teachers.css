@@ -1,0 +1,26 @@
+.aaa{
+    display: flex;
+   
+    justify-content: space-between;
+    height: 80px;
+ align-items: center;
+ padding: 1.5rem 0;
+}
+
+.imgtablecell{
+    background-color: rgb(246, 241, 241);
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+  
+  
+    
+}
+
+.imgtablecell img{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+  
+}

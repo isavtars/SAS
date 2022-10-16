@@ -5,13 +5,15 @@ import Home from './components/pages/Home'
 import Services from './components/pages/Services';
 import { useSelector } from "react-redux";
 
-import Userdetails from './components/Admin/Userdetails';       
+      
 import AdminLogin2 from './components/Admin/AdminLogin2/AdminLogin2';
 import ADashboard from './components/Admin/ADashboard/ADashboard';
 import ADhome from './components/Admin/ADhome/ADhome';
 import Students from "./components/Admin/page/Students/Students"
 import AddStudents from './components/Admin/page/AddStudents/AddStudents';
 // shall we enable editsusers  import Edit from './components/Edit';
+import Teachers from "./components/Admin/page/Teachers/Teachers"
+import EditTeacher from './components/Admin/page/EditTeacher/EditTeacher';
 
 function App() {
 
@@ -46,10 +48,16 @@ function App() {
          }
           {
             admin &&(
+              
             
           <Route path='/admin'  element={<ADashboard />}>
           <Route index  element={<ADhome />} />
-            <Route path='teachers' element={<Userdetails/>} />
+            <Route path='teachers' element={<Teachers/>} />
+              <Route path='editteachers/:id' element={<EditTeacher/>} />
+
+
+
+
             <Route path='students' element={<Students />} />
             <Route path='students/add' element={<AddStudents />} />
           

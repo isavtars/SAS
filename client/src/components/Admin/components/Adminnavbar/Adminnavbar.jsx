@@ -16,7 +16,7 @@ const Adminnavbar = () => {
        <div className="navbar ">
       <div className="wrapper">
       <div className="log">
-      <h1 className='text-red-500 text-2xl'>
+      <h1 className='text-white text-2xl'>
         SAS
       </h1>
       </div>

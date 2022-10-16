@@ -1,0 +1,81 @@
+.tedits{
+
+  
+    width:100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+   
+  
+}
+
+
+.teditscom{
+   
+    display: flex;
+  width: 100%;
+ 
+   
+
+    
+
+}
+
+.teimgsections{
+    
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+   
+  
+}
+
+.ettitle{
+    width: 100%;
+    height: 50px;
+    color: white;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.edttopimg{
+    height: 300px;
+    width: 100%;
+    background-color: rgb(243, 232, 238);
+    border-radius: 10%;
+   
+}
+.edttopimg img{
+    height: 100%;
+        width: 100%;
+        object-fit:contain;
+       
+}
+
+
+
+.tefromcont{
+   
+    width: 100%;
+    display: flex;
+background-color: whitesmoke;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.teform{
+width: 100%;
+}
+
+
+.decoratuionds{
+    height: 500px;
+    background-color: rgb(252, 16, 166);
+    width: 5px;
+}

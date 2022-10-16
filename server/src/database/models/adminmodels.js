@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const register=new mongoose.Schema({
+const adminregisterSchema=new mongoose.Schema({
     Name:{
         required:true,
         type:String,
@@ -16,7 +16,7 @@ const register=new mongoose.Schema({
     Password:{
         required:true,
         type:String,
-        minLength:8,
+        
        
 },
 Phone:{
@@ -37,5 +37,5 @@ isAdmin:{
     
 
 })
-const registermodel=new mongoose.model("userregister",register)
-export default registermodel;
+const adminregistermodels=new mongoose.model("adminmodels",adminregisterSchema)
+export default adminregistermodels;

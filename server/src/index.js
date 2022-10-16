@@ -6,7 +6,7 @@ const PORT=process.env.PORT ||8000;
 //impo expo
 import connection from "./database/connection/conn.js";
 
-import userrouter from "./router/userdetails.js";
+import  adminwtroute from "./router/adminwtRoutes.js"
 import adminroute from "./router/adminRoutes.js"
 
 import bodyParser from "body-parser";
@@ -19,6 +19,7 @@ import "dotenv/config"
 app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
+app.use(express.static("public"))//to host sttatic file
 
 
 app.get("/",(req,res)=>{
@@ -33,8 +34,8 @@ app.get("/about",(req,res)=>{
 
 
 
- //userRouters
-app.use("/user",userrouter)
+ //adminwork on teacher routes
+app.use("/teachers",adminwtroute)
 
 //alladminRoutes
 app.use("/admin",adminroute)

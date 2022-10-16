@@ -1,15 +1,20 @@
 import React,{useState,useEffect} from 'react'
 import {TableContainer,Table,TableHead,TableRow,TableCell,Button} from "@mui/material"
-import api from '../service/api'
+
+import "./Teachers.css"
+import api from '../../../service/api'
 import {Link, useNavigate } from "react-router-dom"
 
+import { useSelector} from 'react-redux';
+ import swal from 'sweetalert';
 
 
-const Userdetails = () => {
+const Teachers = () => {
 
+//redux
+  const token = useSelector((state) => state.user.currentUser.token);
   const navigate=useNavigate();
   
-
  const[users,setusers]=useState([])
  const [datatem, setdatatem] = useState([])
 
@@ -20,7 +25,15 @@ const [input, setinput] = useState('')
  useEffect(() => {
   const getuser=async()=>{
       try{
-       const response=await api.get("/user/all")
+       const response=await api.get("/teachers/all",{
+
+         
+          headers:{         
+            "Content-Type": "multipart/form-data",
+            token:token,
+          },
+
+       })
        
        console.log(response.data)
        setusers(response.data.response)
@@ -41,7 +54,14 @@ const [input, setinput] = useState('')
   const searchfilter=async()=>{
     try{
 
-      const response =await api.get(`/user/searchfilter?search=${input}`)
+      const response =await api.get(`/teachers/searchfilter?search=${input}`,{
+        headers:{
+
+           "Content-Type": "multipart/form-data",
+          token:token,
+
+        }
+      })
       setusers(response.data)
 
       console.log(response.data.response)
@@ -83,20 +103,42 @@ const [input, setinput] = useState('')
  const deluser=async(id,idx)=>{
   try{
 
- if(window.confirm("Are u Sure to Delete the user?")){
 
-  const response=await api.delete(`/admin/del/${id}`)
+  swal({
+  title: "Are you sure?",
+  text: "Once deleted, you will not be able to recover this imaginary file!",
+  icon: "warning",
+  buttons: true,
+  dangerMode: true,
+})
+.then(async(willDelete) => {
+  if (willDelete)  {
+
+  const response=await api.delete(`/teachers/del/${id}`,{
+    headers:{
+           "Content-Type": "multipart/form-data",
+          token:token,
+        }
+  })
   if(response.data){
     const newuserlist = users.filter((filter,index)=>{
      return index !==idx; //
     })
     setusers(newuserlist)
-    
-  }else{
-    console.log("unable to delete")
-  }}
+  }
+
+
+    swal("Poof! Your imaginary file has been deleted!", {
+      icon: "success",
+    });
+  } else {
+    swal("Your imaginary file is safe!");
+  }
+});
+
+
   }catch(e){
-console.log(e)
+ swal("server error");
   }
 }
 
@@ -104,30 +146,31 @@ console.log(e)
    
    
     <div style={{padding:"0px 10px",cursor: "pointer"}}>
+
+
+     
+    
+    <div className='aaa'>
+       <input onChange={search} style={{backgroundColor:"whiteSmoke",padding:"1px 50px"
+           ,"borderRadius":"5px","textAlign":"center","height":"40px" ,"marginLeft":"10px",outline:"none"}} type="text" placeholder='find teachers....' />
+
+           <Button variant="contained" >add teachers</Button>
+           </div>
+   
     
     <TableContainer style={{"backgroundColor":"white"}}>
     <Table>
     <TableHead>
 
-  
-     <TableRow>
-     
-    <TableCell >
-    <div style={{display:"flex", }}>
-       <input onChange={search} style={{backgroundColor:"whiteSmoke",padding:"1px 50px"
-           ,"borderRadius":"5px","textAlign":"center","height":"40px" ,"marginLeft":"10px",outline:"none"}} type="text" placeholder='find teachers....' />
 
-           <Button >add teachers</Button>
-           </div>
-    </TableCell>
-    </TableRow>
       </TableHead>
     
     <TableHead >
    
     <TableRow style={{"backgroundColor":"green"}}>
     <TableCell style={styles}> id</TableCell>
-    <TableCell style={styles}> Name</TableCell>
+    <TableCell style={styles}>profile</TableCell>
+    <TableCell style={styles}>TeacherName</TableCell>
     <TableCell style={styles}> Email</TableCell>
     <TableCell style={styles}> Phone</TableCell>
     <TableCell style={styles}>Teachersdetails</TableCell>
@@ -140,7 +183,8 @@ console.log(e)
   {users.length>0 ?users.map((data,index)=>{
     return<TableRow key={index} style={{margin:""}}>
     <TableCell >{index}</TableCell>
-    <TableCell>{data.Name}</TableCell>
+    <TableCell > <div className='imgtablecell shadow-md bg-slate-900'><img src={data.image} alt="" /></div></TableCell>
+    <TableCell>{data.TeacherName}</TableCell>
     <TableCell>{data.Email}</TableCell>
     <TableCell>{data.Phone}</TableCell>
     <TableCell>
@@ -149,7 +193,7 @@ console.log(e)
     
     
      <TableCell>
-<Link style={{"textDecoration":"none"}} to={`/edituser/${data._id}`}> <Button variant="contained" style={{"backgroundColor":"green"}} >Edit</Button></Link>
+<Link style={{"textDecoration":"none"}} to={`/admin/editteachers/${data._id}`}> <Button variant="contained" style={{"backgroundColor":"green"}} >Edit</Button></Link>
     </TableCell>
     <TableCell>
 <Button onClick={()=>deluser(data._id,index)} variant="contained" style={{"backgroundColor":"red"}}>Delete</Button>
@@ -202,6 +246,6 @@ console.log(e)
   
 }
 
-export default Userdetails
+export default Teachers
 
 

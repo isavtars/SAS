@@ -32,7 +32,7 @@ const Asidenav = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">SAS admin</span>
+          <span className="logo text-white">SAS admin</span>
         </Link>
       </div>
       <hr />
