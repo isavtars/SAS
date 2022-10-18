@@ -43,7 +43,7 @@ const authlogin=async(e)=>{
         const response= await api.post("/admin/login",{...input});
       
 
-      if(response.data.isAdmin){
+      if(response.data.sucess){
       //
       toast.success("login sucess")
       setinput({})
@@ -76,14 +76,14 @@ return(
       <img src={iamgesl} alt="" className="loginimg" />
     </div>
 
-    <div class="md flex">
+    <div className="md flex">
       <div className='bg-red-500 h-60 w-2 ml-1'></div>
       <div className='bg-gray-800 h-50 w-2 ml-1'></div>
       <div className='bg-green-500 h-60 w-2 ml-1'></div>
     </div>
     <div className="sidetwo">
 
-    <div className="headline bg-white h-16 flex justify-center items-center shadow-sm mx-2 ">   <h2 class="text-[#FCA61F] text-2xl">admin login</h2> <GiBalaclava size={40} color="red"/></div>
+    <div className="headline bg-white h-16 flex justify-center items-center shadow-sm mx-2 ">   <h2 className="text-[#FCA61F] text-2xl">admin login</h2> <GiBalaclava size={40} color="red"/></div>
 
  <hr className='mx-2 my-2 bg-red-500 '/>
       <form action="" className='mx-2' onSubmit={authlogin}>

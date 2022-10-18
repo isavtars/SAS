@@ -120,19 +120,31 @@ const [input, setinput] = useState('')
           token:token,
         }
   })
-  if(response.data){
+  if(response.data.success){
     const newuserlist = users.filter((filter,index)=>{
      return index !==idx; //
     })
     setusers(newuserlist)
-  }
-
-
-    swal("Poof! Your imaginary file has been deleted!", {
+    swal( {
+      title: "admin delete success?",
+      text: "you item was delete",
       icon: "success",
     });
+  }else{
+     swal({
+  title: "you are not admin?",
+  text: "you cant delete any items if you want to delete item you can login admin accounts",
+  icon: "warning",
+  
+})
+  }
   } else {
-    swal("Your imaginary file is safe!");
+    swal({
+  title: "you are not admin?",
+  text: "you item cant delete",
+  icon: "warning",
+  
+})
   }
 });
 

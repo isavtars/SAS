@@ -49,6 +49,7 @@ if (matching){
     Email:response.Email,
     sucess:true,
     isAdmin:response.isAdmin,
+    image:response.image,
     token,
   })
   console.log(response)

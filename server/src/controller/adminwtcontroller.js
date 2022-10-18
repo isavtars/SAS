@@ -16,12 +16,17 @@ export default class Detailscontroller{
  async Teachersadding(req,res,imageName){
 
   try{
+
+    if(req.user.isAdmin){
             const myplainpassword = req.body.TPassword;
             const bypassword=await bcrypt.hash(myplainpassword,10)
 
       const response= new teachersmodels({...req.body,image:imageName,TPassword:bypassword});
             const data = await response.save();
-            res.json(data)
+            res.json({data,success:true,message:"you are not admin"})
+    }else{
+      res.send({success:false,message:"you are not admin"})
+    }
 
      
   }catch(err){
@@ -55,9 +60,12 @@ async deluser(req,res){
   const id=req.params.id;
   try{
    
+    if(req.user.isAdmin){
    const response= await teachersmodels.findOneAndDelete({_id:id})
    res.status(200).json({success:true})
-  
+    }else{
+      res.send({success:false,message:"you are not admin"})
+    }
   }catch(e){
     console.log(e)
     res.status(500).json({message:e.message,stack:e.stack})
@@ -87,9 +95,12 @@ async updateuser(req,res,imageName){
   const update={...req.body,image:imageName}
   const opts={new:true}
   try{
+    if(req.user.isAdmin){
   const response= await teachersmodels.findOneAndUpdate({_id:id},update,opts)
-  
-  res.json(response)
+  res.json({response,success:true,message:"updatesucess fulll"})
+    }else{
+ res.json({success:false,message:"you are not admin"})
+    }
   }catch(e){
     res.status(500).json({success:false,stack:e.stack})
   }

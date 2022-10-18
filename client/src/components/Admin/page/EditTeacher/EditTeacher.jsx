@@ -54,18 +54,23 @@ console.log(response.data)
     }
   })
    
-  
+  if(response.data.success){
   swal({
-  title: "update sucess ",
-   
+  title: "update sucess ", 
   text: "teacher upadte sucess",
   icon: "success",
   buttons: true,
- 
- 
 })
-    
     navigate("/admin/teachers")
+}else{
+swal({
+  title: "faliied to edits ", 
+  text: "you are not able to update",
+  icon: "waring",
+
+})
+
+}
    
   
   }catch(e){

@@ -8,8 +8,23 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 
+import profileimg from "../../.././../images/a.png"
+
+
+
+
+import { useSelector } from 'react-redux';
 
 const Adminnavbar = () => {
+
+ 
+    
+  const admin = useSelector((state) => state.user.currentUser);
+     console.log(admin)
+
+     const proiamge= 'http://localhost:8000/uploads/'+admin.image ;
+
+    
   return (
     <div>
 
@@ -44,10 +59,14 @@ const Adminnavbar = () => {
 
           <div className="item">
             <img
-              src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src={admin.image?proiamge:profileimg}
               alt=""
-              className="avatar"
+              className="avatar bg-[#181717]"
             />
+
+            <div className="adminname">
+              <span className='text-white text-xl cursor-pointer'>{admin?admin.Name:""}</span>
+            </div>
           </div>
         </div>
 

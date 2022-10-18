@@ -32,6 +32,7 @@ class TecherAdminController{
                 Name:response.TeacherName,
                 Email:response.Email,
                 GRADE:response.GRADE,
+                image:response.image,
                 ttoken
             })
 

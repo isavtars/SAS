@@ -28,6 +28,8 @@ const token = useSelector((state) => state.user.currentUser.token);
 const  trigger=async(e)=>{
   e.preventDefault();
   try{
+
+
     
   const response=await api.post(`/teachers/addteachers`,{...user,image:image},{
     headers:{
@@ -35,18 +37,25 @@ const  trigger=async(e)=>{
       token:token,
     }
   })
-   
-  
+
+  if(response.data.success){
   swal({
   title: "add success",
   text: " teachers added sucessfully",
   icon: "success",
   buttons: true,
- 
- 
-})
-    
+})  
     navigate("/admin/teachers")
+  }else{
+      swal({
+  title: "you cant able to add any items",
+  text: "you have login admin account to add teachers",
+  icon: "warning",
+  
+})  
+  }
+   
+  
    
   
   }catch(e){

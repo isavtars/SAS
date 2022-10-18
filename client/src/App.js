@@ -21,10 +21,14 @@ import Teacherlogin from './components/AdminTeachersui/Teacherlogin/Teacherlogin
 function App() {
 
   
-  // const admin = useSelector((state) => state.user.currentUser);
       
   const admin = useSelector((state) => state.user.currentUser);
      console.log(admin)
+
+      
+  const tadmin = useSelector((state) => state.teacher.currentUser);
+     console.log(tadmin)
+ 
  
 
 
@@ -55,32 +59,31 @@ function App() {
           )
          }
           {
-            admin &&(
-              
-            
+            admin &&(             
           <Route path='/admin'  element={<ADashboard />}>
           <Route index  element={<ADhome />} />
             <Route path='teachers' element={<Teachers/>} />
               <Route path='editteachers/:id' element={<EditTeacher/>} />
                <Route path='addteacher' element={<AddTeachers />} />
-
-
-
             <Route path='students' element={<Students />} />
-            <Route path='students/add' element={<AddStudents />} />
-          
-           </Route>
-           
-  
-
-    
+            <Route path='students/add' element={<AddStudents />} />  
+           </Route>          
             )
-
           } 
+  
+    
 
-          {/* uiRouters fro teachers */}
+          {/* uiRouters fro teachersadmin*/}
+<Route path="/teacherlogin" element={<Teacherlogin />}></Route>
+{/* 
+           
+          <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/admin" replace /> : <Teacherlogin />}></Route>
+          <Route path="/admin" element={tadmin==null ? <Navigate to="/teacherlogin" replace /> :  <ADashboard />}  ></Route>  */}
+          
+           {/* //teacherDashboard */}s
+         
 
-          <Route path="/teacherlogin" element={<Teacherlogin />}></Route>
+
           
 
 

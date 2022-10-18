@@ -31,8 +31,11 @@ isAdmin:{
     require:true,
     default:false,
 
-}
+},
 
+image:{
+    type:String,
+}
     
     
 
