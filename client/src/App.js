@@ -11,15 +11,22 @@ import ADashboard from './components/Admin/ADashboard/ADashboard';
 import ADhome from './components/Admin/ADhome/ADhome';
 import Students from "./components/Admin/page/Students/Students"
 import AddStudents from './components/Admin/page/AddStudents/AddStudents';
-// shall we enable editsusers  import Edit from './components/Edit';
+
 import Teachers from "./components/Admin/page/Teachers/Teachers"
 import EditTeacher from './components/Admin/page/EditTeacher/EditTeacher';
+import AddTeachers from './components/Admin/page/AddTeachers/AddTeachers';
+import Home404 from './components/pages/Home404';
+import Teacherlogin from './components/AdminTeachersui/Teacherlogin/Teacherlogin';
 
 function App() {
 
   
+  // const admin = useSelector((state) => state.user.currentUser);
+      
   const admin = useSelector((state) => state.user.currentUser);
-  console.log(admin)
+     console.log(admin)
+ 
+
 
   return (
     <>
@@ -28,6 +35,7 @@ function App() {
         <Routes>
 
           <Route path='/' element={<Home/>}></Route>
+           <Route path='*' element={<Home404/>}></Route>
           <Route path='/services' element={<Services/>}> </Route>
     
 
@@ -42,7 +50,7 @@ function App() {
 
 
          {
-          admin==null&&(
+          admin==null &&(
             <Route path="/adminlogin" element={<AdminLogin2 />}  ></Route>
           )
          }
@@ -54,7 +62,7 @@ function App() {
           <Route index  element={<ADhome />} />
             <Route path='teachers' element={<Teachers/>} />
               <Route path='editteachers/:id' element={<EditTeacher/>} />
-
+               <Route path='addteacher' element={<AddTeachers />} />
 
 
 
@@ -69,6 +77,10 @@ function App() {
             )
 
           } 
+
+          {/* uiRouters fro teachers */}
+
+          <Route path="/teacherlogin" element={<Teacherlogin />}></Route>
           
 
 

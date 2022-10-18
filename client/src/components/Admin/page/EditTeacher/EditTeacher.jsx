@@ -128,7 +128,7 @@ console.log(response.data)
        <form action="" className='teform px-1' onSubmit={trigger}>
 
       <div className="TeacherName h-[58px]  mb-1 px-1  w-[100%]">
-      <input type="text" value={user.TeacherName} onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#03a3a3] w-[100%] px-1 Class
+      <input type="text" value={user.TeacherName} onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#2f3333] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm'  name="TeacherName"/>
       </div>
@@ -137,14 +137,14 @@ outline-none rounded-sm'  name="TeacherName"/>
       <div className="telogindfe flex mb-1 w-[100%]  ">
 
       <div className="Email h-[58px]  mb-1  px-1 w-full">
-      <input type="text" value={user.Email} onChange={push} placeholder='email' className='h-[100%] text-white text-xl bg-[#f6c204] w-[100%] px-1 Class
+      <input type="text" value={user.Email} onChange={push} placeholder='email' className='h-[100%] text-white text-xl bg-[#2b3638] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm'  name="Email"/>
       </div>
 
 
       <div className="TPassword h-[58px]  mb-1 px-1  w-full">
-      <input type="text" value={user.TPassword} onChange={push} placeholder='password' className='h-[100%] text-white text-xl bg-[#ef049d] w-[100%] px-1 Class
+      <input type="text" value={user.TPassword} onChange={push} placeholder='password' className='h-[100%] text-white text-xl bg-[#32323e] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm'  name="TPassword"/>
       </div>
@@ -152,14 +152,14 @@ outline-none rounded-sm'  name="TPassword"/>
 
 
       <div className="Phone h-[58px]  mb-1  w-full px-1">
-      <input type="text" value={user.Phone} onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#05d2f6] w-[100%] px-1 Class
+      <input type="text" value={user.Phone} onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#2a3638] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm'  name="Phone"/>
       </div>
 
 
       <div className="Address h-[58px]  mb-1 px-1  w-full">
-      <input type="text" value={user.Address} onChange={push} placeholder='Address' className='h-[100%] text-white text-xl bg-[#068f63] w-[100%] px-1 Class
+      <input type="text" value={user.Address} onChange={push} placeholder='Address' className='h-[100%] text-white text-xl bg-[#2d3331] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm' name="Address" />
       </div>
@@ -168,14 +168,14 @@ outline-none rounded-sm' name="Address" />
 <div className="qulaficgrde flex mb-1">
 
       <div className="Qulification h-[58px]  mb-1 px-1 w-full">
-      <input type="text" value={user.Qulification} onChange={push} placeholder='qulaifactions' className='h-[100%] text-white text-xl bg-[#9f1818] w-[100%] px-1 Class
+      <input type="text" value={user.Qulification} onChange={push} placeholder='qulaifactions' className='h-[100%] text-white text-xl bg-[#272020] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm' name="Qulification" />
       </div>
 
 
       <div className="GRADE h-[58px]  mb-1 px-1  w-full">
-      <input type="text" value={user.GRADE} onChange={push} placeholder='Grade' className='h-[100%] text-white text-xl bg-[#20205f] w-[100%] px-1 Class
+      <input type="text" value={user.GRADE} onChange={push} placeholder='Grade' className='h-[100%] text-white text-xl bg-[#2f2f37] w-[100%] px-1 Class
 Properties
 outline-none rounded-sm' name="GRADE" />
       </div>
@@ -183,11 +183,11 @@ outline-none rounded-sm' name="GRADE" />
 
 
       <div className="Doj h-[58px]  mb-1  px-1 w-full">
-      <input type="text" value={user.Doj} onChange={push} placeholder='date/of/join' className='h-[100%] text-white text-xl  w-[100%] px-1 
+      <input type="date" value={user.Doj} onChange={push} placeholder='date/of/join' className='h-[100%] text-white text-xl  w-[100%] px-1 
 outline-none rounded-sm bg-slate-600' name="Doj" />
       </div>
 
-      <div className="submitbtn h-[58px]  rounded-sm text-white bg-[#710fe0] mb-1  px-4 w-full">
+      <div className="submitbtn h-[58px]  rounded-sm text-white bg-[#4204bd] mb-1  px-4 w-full">
         <input type="submit" value='submit' className=' h-[100%] text-white text-xl  w-[100%] px-2 ' />
       </div>
 

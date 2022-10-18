@@ -40,7 +40,7 @@ const  matching=bcrypt.compareSync(passw,response.Password)
 console.log(matching)
 if (matching){
   //jwt
-  const token= jwt.sign({id:response._id,isAdmin:response.isAdmin,Name:response.Name,Email:response.Email,},process.env.JWT_SECRET,{
+  const token= jwt.sign({id:response._id,isAdmin:response.isAdmin,Name:response.Namer,Email:response.Email,},process.env.JWT_SECRET,{
     expiresIn:"7d",
   })
   res.json({

@@ -13,7 +13,7 @@ const Adminnavbar = () => {
   return (
     <div>
 
-       <div className="navbar ">
+       <div className="anavbar ">
       <div className="wrapper">
       <div className="log">
       <h1 className='text-white text-2xl'>

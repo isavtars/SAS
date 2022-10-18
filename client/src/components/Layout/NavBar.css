@@ -1,5 +1,5 @@
 .navbar {
-    background: linear-gradient(90deg, rgb(100, 155, 179) 0%, hsl(192, 95%, 35%) 100%);
+    
     height: 80px;
     display: flex;
     justify-content: center;
@@ -8,6 +8,7 @@
     position: sticky;
     top: 0;
     z-index: 10000000;
+    background: linear-gradient(90deg, rgb(40, 150, 197) 0%, hsl(192, 95%, 35%) 100%);
   }
   
   .navbar-container {
@@ -59,9 +60,9 @@
   }
   
   .nav-links:hover {
-    border-bottom: 4px solid rgb(6, 206, 237);
+    border-bottom: 4px solid rgb(246, 6, 62);
     transition: all 0.2s ease-out;
-    color: aqua;
+    color: rgb(4, 255, 62);
   }
   
   .fa-bars {

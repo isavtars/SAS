@@ -153,8 +153,9 @@ const [input, setinput] = useState('')
     <div className='aaa'>
        <input onChange={search} style={{backgroundColor:"whiteSmoke",padding:"1px 50px"
            ,"borderRadius":"5px","textAlign":"center","height":"40px" ,"marginLeft":"10px",outline:"none"}} type="text" placeholder='find teachers....' />
-
-           <Button variant="contained" >add teachers</Button>
+            
+            
+           <Button variant="contained" ><Link to="/admin/addteacher">add teachers</Link> </Button>
            </div>
    
     
@@ -182,7 +183,7 @@ const [input, setinput] = useState('')
     
   {users.length>0 ?users.map((data,index)=>{
     return<TableRow key={index} style={{margin:""}}>
-    <TableCell >{index}</TableCell>
+    <TableCell >{index+1}</TableCell>
     <TableCell > <div className='imgtablecell shadow-md bg-slate-900'><img src={data.image} alt="" /></div></TableCell>
     <TableCell>{data.TeacherName}</TableCell>
     <TableCell>{data.Email}</TableCell>

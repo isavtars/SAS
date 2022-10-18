@@ -1,0 +1,19 @@
+.Tloginform{
+    width: 35%;
+    padding: 1.1rem;
+    background-color:rgb(231, 237, 243);
+}
+
+.imgprofii{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background-color: rgb(247, 245, 247);
+}
+.imgprofii img {
+height: 100%;
+    width: 100%;
+    border-radius:100%;
+    object-fit: contain;
+
+}

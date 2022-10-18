@@ -27,7 +27,7 @@ function Navbar() {
    
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar text-white">
                 <div className="navbar-container">
                     <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                         SAS <i className="fab fa-typo3" />
@@ -59,7 +59,7 @@ function Navbar() {
 
 
                         <li className="nav-item">
-                            <Link to='/adminlogin' className="nav-links" onClick={closeMobileMenu}>
+                            <Link to='/teacherlogin' className="nav-links" onClick={closeMobileMenu}>
                                 Teachers
                             </Link>
                             

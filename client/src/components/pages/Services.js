@@ -7,7 +7,8 @@ export default function Services() {
     <>
     <NavBar/>
  
-    <h1 className='services'>SERVICES</h1>
+ <h1>this is our services</h1>
+   
        </>
     )
 }

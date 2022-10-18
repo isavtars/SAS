@@ -8,6 +8,7 @@ import connection from "./database/connection/conn.js";
 
 import  adminwtroute from "./router/adminwtRoutes.js"
 import adminroute from "./router/adminRoutes.js"
+import teacheradminrouter from "./router/teacherRoutes.js"
 
 import bodyParser from "body-parser";
 import cors from "cors"
@@ -20,7 +21,7 @@ app.use(express.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors())
 app.use(express.static("public"))//to host sttatic file
-
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/",(req,res)=>{
     res.send("this is express server")
@@ -39,6 +40,9 @@ app.use("/teachers",adminwtroute)
 
 //alladminRoutes
 app.use("/admin",adminroute)
+
+//teachetadminRoutes
+app.use("/teacheradmin",teacheradminrouter)
 
 
 

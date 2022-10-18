@@ -39,11 +39,22 @@ const Asidenav = () => {
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
+           <Link to="/admin" style={{ textDecoration: "none" }}>
           <li>
             <DashboardIcon className="icon" />
             <span>Dashboard</span>
           </li>
+          </Link>
           <p className="title">LISTS</p>
+
+          <Link to="/admin/teachers" style={{ textDecoration: "none" }}>
+            <li>
+              <PersonOutlineIcon className="icon" />
+              <span>admin users</span>
+            </li>
+          </Link>
+
+
           <Link to="/admin/teachers" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
@@ -58,10 +69,7 @@ const Asidenav = () => {
               
             </li>
           </Link>
-          <li>
-            <CreditCardIcon className="icon" />
-            <span>Orders</span>
-          </li>
+        
           <li>
             <LocalShippingIcon className="icon" />
             <span>Delivery</span>
