@@ -4,7 +4,7 @@
  import React,{useState,useEffect} from 'react'
 import {TableContainer,Table,TableHead,TableRow,TableCell,Button} from "@mui/material"
 
-import "./Students.css"
+import "./TAStudents.css"
 import api from '../../../service/api'
 import {Link, useNavigate } from "react-router-dom"
 
@@ -12,10 +12,14 @@ import { useSelector} from 'react-redux';
  import swal from 'sweetalert';
 
 
-const  Students = () => {
+const  TAStudents = () => {
 
 //redux
-  const token = useSelector((state) => state.user.currentUser.token);
+  const semq = useSelector((state) => state.teacher.currentUser.classTeacherOf
+);
+
+ const ttoken = useSelector((state) => state.teacher.currentUser.ttoken
+);
   const navigate=useNavigate();
   
  const[users,setusers]=useState([])
@@ -28,12 +32,12 @@ const [input, setinput] = useState('')
  useEffect(() => {
   const getuser=async()=>{
       try{
-       const response=await api.get("/teachers/getstudents",{
+       const response=await api.get(`/teacheradmin/students?semq=${semq}`,{
 
          
           headers:{         
             "Content-Type": "multipart/form-data",
-            token:token,
+            ttoken:ttoken,
           },
 
        })
@@ -52,39 +56,39 @@ const [input, setinput] = useState('')
  }, [])
 
 
- useEffect(() => {
+//  useEffect(() => {
 
-  const searchfilter=async()=>{
-    try{
+//   const searchfilter=async()=>{
+//     try{
 
-      const response =await api.get(`/teachers/studentssearchfilter?search=${input}`,{
-        headers:{
+//       const response =await api.get(`/teachers/studentssearchfilter?search=${input}`,{
+//         headers:{
 
-           "Content-Type": "multipart/form-data",
-          token:token,
+//            "Content-Type": "multipart/form-data",
+//           token:token,
 
-        }
-      })
-      setusers(response.data)
+//         }
+//       })
+//       setusers(response.data)
 
-      console.log(response.data.response)
-      console.log(response.data)
+//       console.log(response.data.response)
+//       console.log(response.data)
 
-    }catch(err){
-      console.log(err)
-    }
+//     }catch(err){
+//       console.log(err)
+//     }
 
 
-  }
+//   }
 
-  if(input) searchfilter();
-  else{
-    setusers(datatem)
-  }
+//   if(input) searchfilter();
+//   else{
+//     setusers(datatem)
+//   }
 
    
    
- }, [input])
+//  }, [input])
  
 
   const styles={
@@ -146,6 +150,7 @@ const [input, setinput] = useState('')
   
     
   { users.map((data,index)=>{
+   
     return<TableRow key={index} style={{margin:""}}>
     <TableCell >{index+1}</TableCell>
     <TableCell > <div className='simgtablecell shadow-md bg-slate-900'><img src={data.image} alt="" /></div></TableCell>
@@ -197,7 +202,7 @@ const [input, setinput] = useState('')
   
 }
 
-export default  Students
+export default  TAStudents
 
 
 

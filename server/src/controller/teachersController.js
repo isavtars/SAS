@@ -4,6 +4,7 @@ import tokenModel from "../database/models/tokenModel.js"
 import  nodemailer from "nodemailer"
 import  bcrypt  from 'bcrypt';
 import jwt from "jsonwebtoken";
+import studentModel from "../database/models/students.js"
 
 import "dotenv/config"
 
@@ -23,7 +24,7 @@ class TecherAdminController{
                 const matching= bcrypt.compareSync(Password,response.TPassword)
                 if(matching){
                 //jwt
-                 const ttoken= jwt.sign({id:response._id,Name:response.TeacherName,Email:response.Email,GRADE:response.GRADE},process.env.JWT_SECRET_TEACHER,{
+                 const ttoken= jwt.sign({id:response._id,Name:response.TeacherName,Email:response.Email,classTeacherOf:response.classTeacherOf},process.env.JWT_SECRET_TEACHER,{
     expiresIn:"7d",
   })
             // res.send({sucess:true,message:"login faiiled"})
@@ -31,7 +32,7 @@ class TecherAdminController{
                 id:response._id,
                 Name:response.TeacherName,
                 Email:response.Email,
-                GRADE:response.GRADE,
+                classTeacherOf:response.classTeacherOf,
                 image:response.image,
                 ttoken
             })
@@ -152,6 +153,34 @@ class TecherAdminController{
     res.send("Not Verified");
   }
 
+    }
+
+ 
+    //getstudentsbusemester for teacheradmin
+    async getstudentsbusemester(req,res){
+      // res.send("hello")
+      const semq =req.query.semq;
+        // const {search}=req.query;
+      try{
+        console.log(req.user.classTeacherOf)
+
+
+        if(semq==req.user.classTeacherOf){
+        const response = await studentModel.find({$or:[{Semester:semq}]})
+         
+  for (let d of response){
+                //host in the sever locally
+                d.image="http://localhost:8000/uploads/" + d.image;
+            }
+    
+        res.send(response)
+        }else{
+           res.send({sucess:false,message:"you are not valid teachers"})
+        }
+
+      }catch(err){
+        res.send(err)
+      }
     }
 
 }

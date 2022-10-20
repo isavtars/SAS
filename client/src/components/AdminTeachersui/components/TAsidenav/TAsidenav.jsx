@@ -55,7 +55,7 @@ const TAsidenav = () => {
           </Link>
 
 
-          <Link to="/tadmin" style={{ textDecoration: "none" }}>
+          <Link to="/tadmin/students" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>students</span>

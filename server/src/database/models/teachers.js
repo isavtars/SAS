@@ -51,7 +51,7 @@ const teachersSchema= new mongoose.Schema({
           required:true,
     },
 
-    GRADE:{
+    classTeacherOf:{
           type:String,
            required:true,
     },

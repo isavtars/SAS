@@ -117,7 +117,7 @@ swal({
 
         <div className="Name flex">
       
-          <h1>{user.GRADE}</h1>
+          <h1>{user.classTeacherOf}</h1>
        </div>
 
        </div>
@@ -179,10 +179,10 @@ outline-none rounded-sm' name="Qulification" />
       </div>
 
 
-      <div className="GRADE h-[58px]  mb-1 px-1  w-full">
-      <input type="text" value={user.GRADE} onChange={push} placeholder='Grade' className='h-[100%] text-white text-xl bg-[#2f2f37] w-[100%] px-1 Class
+      <div className="classTeacherOf h-[58px]  mb-1 px-1  w-full">
+      <input type="text" value={user.classTeacherOf} onChange={push} placeholder='classTeacherOf' className='h-[100%] text-white text-xl bg-[#2f2f37] w-[100%] px-1 Class
 Properties
-outline-none rounded-sm' name="GRADE" />
+outline-none rounded-sm' name="classTeacherOf" />
       </div>
 </div>
 

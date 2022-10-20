@@ -20,6 +20,7 @@ import Teacherlogin from './components/AdminTeachersui/page/Teacherlogin/Teacher
 import TADashboard from './components/AdminTeachersui/layout/TADashboard/TADashboard';
 import TADhome from './components/AdminTeachersui/layout/TADhome/TADhome';
 import Passwordreset from './components/AdminTeachersui/page/Passwordreset/Passwordreset';
+import TAStudents from './components/AdminTeachersui/page/TAStudents/TAStudents';
 
 function App() {
 
@@ -102,6 +103,8 @@ function App() {
           tadmin &&(
              <Route path='/tadmin'  element={<TADashboard />}>
           <Route index  element={<TADhome />} />
+          <Route path="students"  element={<TAStudents />} />
+         
            
            </Route>   
           )

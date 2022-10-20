@@ -83,7 +83,7 @@ const  trigger=async(e)=>{
        <form action="" className='ateform px-1' onSubmit={trigger}>
 
       <div className="aTeacherName h-[58px]  mb-1 px-1  w-[100%]">
-      <input type="text"  onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="text"  onChange={push} placeholder='name' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm'  name="TeacherName"/>
       </div>
@@ -92,14 +92,14 @@ outline-none rounded-sm'  name="TeacherName"/>
       <div className="atelogindfe flex mb-1 w-[100%]  ">
 
       <div className="aEmail h-[58px]  mb-1  px-1 w-full">
-      <input type="text"  onChange={push} placeholder='email' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="text"  onChange={push} placeholder='email' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm'  name="Email"/>
       </div>
 
 
       <div className="aTPassword h-[58px]  mb-1 px-1  w-full">
-      <input type="text"  onChange={push} placeholder='password' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="text"  onChange={push} placeholder='password' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm'  name="TPassword"/>
       </div>
@@ -107,14 +107,14 @@ outline-none rounded-sm'  name="TPassword"/>
 
 
       <div className="aPhone h-[58px]  mb-1  w-full px-1">
-      <input type="number"  onChange={push} placeholder='phone' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="number"  onChange={push} placeholder='phone' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm'  name="Phone"/>
       </div>
 
 
       <div className="aAddress h-[58px]  mb-1 px-1  w-full">
-      <input type="text"  onChange={push} placeholder='Address' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="text"  onChange={push} placeholder='Address' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm' name="Address" />
       </div>
@@ -123,16 +123,16 @@ outline-none rounded-sm' name="Address" />
 <div className="aqulaficgrde flex mb-1">
 
       <div className="aQulification h-[58px]  mb-1 px-1 w-full">
-      <input type="text"  onChange={push} placeholder='qulaifactions' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <input type="text"  onChange={push} placeholder='qulaifactions' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
 outline-none rounded-sm' name="Qulification" />
       </div>
 
 
-      <div className="aGRADE h-[58px]  mb-1 px-1  w-full">
-      <input type="text"  onChange={push} placeholder='Grade' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 Class
+      <div className="aclassTeacherOf h-[58px]  mb-1 px-1  w-full">
+      <input type="text"  onChange={push} placeholder='classTeacherOf' className='h-[100%] text-white text-xl bg-[#282830] w-[100%] px-1 className
 Properties
-outline-none rounded-sm' name="GRADE" />
+outline-none rounded-sm' name="classTeacherOf" />
       </div>
 </div>
          

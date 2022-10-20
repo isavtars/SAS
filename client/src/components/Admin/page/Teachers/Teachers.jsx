@@ -188,7 +188,7 @@ const [input, setinput] = useState('')
     <TableCell style={styles}> Phone</TableCell>
     <TableCell style={styles}>Teachersdetails</TableCell>
     <TableCell style={styles}>Edits</TableCell>
-    <TableCell style={styles}>Delets</TableCell>
+    <TableCell style={styles}>Delete</TableCell>
    
     </TableRow>
   
@@ -219,21 +219,22 @@ const [input, setinput] = useState('')
     
    }):( 
     <TableRow>
-    <TableCell>user not found
+    <TableCell>no any teachers
    </TableCell>
-   <TableCell>user not found
+   <TableCell>no any teachers
    </TableCell>
-    <TableCell>user not found
+    <TableCell>no any teachers
    </TableCell>
-   <TableCell>user not found
+   <TableCell>no any teachers
    </TableCell>
-    <TableCell>user not found
+    <TableCell>no any teachers
    </TableCell>
-    <TableCell>user not found
+    <TableCell>no any teachers
    </TableCell>
-   <TableCell>user not found
+   <TableCell>no any teachers
    </TableCell>
-    
+     <TableCell>no any teachers
+   </TableCell>
    
    </TableRow>
    
