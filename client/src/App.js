@@ -16,7 +16,10 @@ import Teachers from "./components/Admin/page/Teachers/Teachers"
 import EditTeacher from './components/Admin/page/EditTeacher/EditTeacher';
 import AddTeachers from './components/Admin/page/AddTeachers/AddTeachers';
 import Home404 from './components/pages/Home404';
-import Teacherlogin from './components/AdminTeachersui/Teacherlogin/Teacherlogin';
+import Teacherlogin from './components/AdminTeachersui/page/Teacherlogin/Teacherlogin';
+import TADashboard from './components/AdminTeachersui/layout/TADashboard/TADashboard';
+import TADhome from './components/AdminTeachersui/layout/TADhome/TADhome';
+import Passwordreset from './components/AdminTeachersui/page/Passwordreset/Passwordreset';
 
 function App() {
 
@@ -34,64 +37,122 @@ function App() {
 
   return (
     <>
-      <Router>
-       
-        <Routes>
+ {/* //admin dashboards */}
 
+   {
+    
+    admin ?
+      <Router>      
+        <Routes>
           <Route path='/' element={<Home/>}></Route>
            <Route path='*' element={<Home404/>}></Route>
           <Route path='/services' element={<Services/>}> </Route>
-    
+      <Route path="/teacherlogin" element={<Teacherlogin />}></Route>
+    <Route path="/password-reset" element={<Passwordreset />}></Route>
+  
+       
+
+        <Route path="/adminlogin" element={admin  ? <Navigate to="/admin" replace /> :  <AdminLogin2 />}  ></Route>
 
         
+        <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/tadmin" replace /> :  <Teacherlogin />}  ></Route>
 
-
-        
-        {/* //admin dashboards */}
-          <Route path="/adminlogin" element={admin  ? <Navigate to="/admin" replace /> :  <AdminLogin2 />}  ></Route>
-        <Route path="/admin" element={admin==null ? <Navigate to="/adminlogin" replace /> :  <ADashboard />}  ></Route>
+        {
           
-
-
-         {
-          admin==null &&(
-            <Route path="/adminlogin" element={<AdminLogin2 />}  ></Route>
-          )
-         }
-          {
-            admin &&(             
+        admin &&(
+                   
           <Route path='/admin'  element={<ADashboard />}>
           <Route index  element={<ADhome />} />
+
             <Route path='teachers' element={<Teachers/>} />
               <Route path='editteachers/:id' element={<EditTeacher/>} />
                <Route path='addteacher' element={<AddTeachers />} />
+
             <Route path='students' element={<Students />} />
-            <Route path='students/add' element={<AddStudents />} />  
-           </Route>          
-            )
-          } 
-  
-    
-
-          {/* uiRouters fro teachersadmin*/}
-<Route path="/teacherlogin" element={<Teacherlogin />}></Route>
-{/* 
-           
-          <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/admin" replace /> : <Teacherlogin />}></Route>
-          <Route path="/admin" element={tadmin==null ? <Navigate to="/teacherlogin" replace /> :  <ADashboard />}  ></Route>  */}
+            <Route path='addstudents' element={<AddStudents />} />  
+           </Route>    
+        )      
+        }
           
-           {/* //teacherDashboard */}s
+        </Routes>
+      </Router>
+      :
+       <Router>
+       <Routes>
+        <Route path='/' element={<Home/>}></Route>
+           <Route path='*' element={<Home404/>}></Route>
+          <Route path='/services' element={<Services/>}> </Route>
+     <Route path="/password-reset" element={<Passwordreset />}></Route>
+
+     
+          <Route path="/adminlogin" element={<AdminLogin2 />}></Route>
+            <Route path="/teacherlogin" element={<Teacherlogin />}></Route>
+    <Route path="/admin" element={!admin  ? <Navigate to="/adminlogin" replace /> :  <ADashboard />}  ></Route>
+
+
+
+
+        
+            <Route path="/tadmin" element={!tadmin  ? <Navigate to="/teacherlogin" replace /> :  <TADashboard />}  ></Route>
+
+            
+        <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/tadmin" replace /> :  <Teacherlogin />}  ></Route> 
          
+         {
+          tadmin &&(
+             <Route path='/tadmin'  element={<TADashboard />}>
+          <Route index  element={<TADhome />} />
+           
+           </Route>   
+          )
+         }
+
+     
+       </Routes>
+       </Router>
+      
+      
+    
+   }
 
 
-          
+    {/* //forteacheracoouroutecontroller */}
+
+    {/* {
+      tadmin ? 
+      <Router>
+        <Routes>
 
 
+
+        <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/tadmin" replace /> :  <Teacherlogin />}  ></Route>
+         
+        <Route path='/tadmin'  element={<TADashboard />}>
+          <Route index  element={<TADhome />} />
+           
+           </Route>   
+           
 
         </Routes>
       </Router>
+      :
+      <Router>
+        <Routes>
 
+
+       
+
+          <Route path="/adminlogin" element={<AdminLogin2 />}></Route>
+            <Route path="/teacherlogin" element={<Teacherlogin />}></Route>
+
+            <Route path="/tadmin" element={!tadmin  ? <Navigate to="/teacherlogin" replace /> :  <TADashboard />}  ></Route>
+          
+        </Routes>
+      </Router>
+    
+    } */}
     </>
+
   );
 }
 

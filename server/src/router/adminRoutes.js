@@ -13,11 +13,10 @@ route.post("/register",admincontroller.userreg)
 //admin login
 route.post("/login",admincontroller.userlog)
 
+
+//make it cleare not neccesarry
 //admin add students
 route.post("/students",validate,admincontroller.addstudents)
-
-
-
 //admin add students
 route.get("/studentsget",validate,admincontroller.getstudents)
 

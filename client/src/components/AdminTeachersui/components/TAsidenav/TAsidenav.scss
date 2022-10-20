@@ -1,0 +1,104 @@
+.tsidebar {
+   
+    border-right: 0.5px solid rgb(230, 227, 227);
+    min-height: 100vh;
+    background-color: rgb(228, 237, 239);
+    font-size: 1.1rem;
+    overflow-y: scroll;
+    color: rgb(240, 2, 2);
+  
+  
+
+    .top {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: sticky;
+        top: 0;
+        background-color: rgb(3, 46, 46);
+        background: linear-gradient(90deg, #f6088b, hsl(326, 56%, 28%) 100%);
+        color: red;
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #f4f2fb;
+        }
+    }
+
+    hr {
+        height: 0;
+        border: 0.5px solid rgb(230, 227, 227);
+    }
+
+    .center {
+        padding-left: 10px;
+        font-size: 1.1rem;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            .title {
+                font-size: 10px;
+                font-weight: bold;
+                color: #999;
+                margin-top: 15px;
+                margin-bottom: 5px;
+            }
+
+            li {
+                display: flex;
+                align-items: center;
+                padding: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgb(52, 52, 52);
+                    color: whitesmoke;
+                }
+
+                .icon {
+                    font-size: 18px;
+                    color: #f6088b;
+                }
+
+                span {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: rgb(105, 71, 185);
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+
+    .bottom {
+        display: flex;
+        align-items: center;
+        margin: 10px;
+
+        .colorOption {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid #7451f8;
+            cursor: pointer;
+            margin: 5px;
+
+            &:nth-child(1) {
+                background-color: whitesmoke;
+            }
+
+            &:nth-child(2) {
+                background-color: #333;
+            }
+
+            &:nth-child(3) {
+                background-color: darkblue;
+            }
+        }
+    }
+}

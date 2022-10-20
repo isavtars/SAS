@@ -1,6 +1,7 @@
 
 import registermodel from "../database/models/adminmodels.js";
 import teachersmodels from "../database/models/teachers.js"
+import studentModel from "../database/models/students.js"
 
 import bcrypt  from "bcrypt"
 
@@ -136,5 +137,75 @@ console.log(search)
   }
 
 }
+
+
+
+//this is the controller for the admin work for the students
+
+async addingStudents(req,res,imageName){
+  try{
+
+
+    if(req.user.isAdmin){
+    const response = new studentModel({...req.body,image:imageName})
+    const data = await response.save();
+    res.send({data,sucess:true,message:"students add sucessfully"})
+    }else{
+       res.send({data,sucess:false,message:"you are not admin"})
+    }
+    
+    
+  }catch(err){
+    res.send(err)
+  }
+}
+
+//getsstudents
+async getsstudents(req,res){
+  try{
+
+    const response=await studentModel.find({})
+     for (let d of response){
+              
+                d.image="http://localhost:8000/uploads/" + d.image;
+            }
+    res.send(response)
+
+  }catch(err){
+ res.send(err)
+  }
+}
+
+
+//studentssearchilter
+
+async studentssearchilter(req,res){
+  const {search}=req.query;
+  try{
+
+    if(search)  
+    {
+    const data=await studentModel.find({$or:[{studentName:search},{ParentsName:search}]});
+    
+  for (let d of data){
+                //host in the sever locally
+                d.image="http://localhost:8000/uploads/" + d.image;
+            }
+    res.json(data)
+    }else{
+      res.json("there is no serch")
+    }
+    
+
+  }
+  catch(err){
+    res.json({stack:err.stack})
+console.log(search)
+
+  }
+
+}
+
+
 
 }

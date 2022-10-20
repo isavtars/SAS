@@ -15,6 +15,7 @@ import iamgesl from "../../../images/dl.png"
 //redux
 import {loginStart, loginSuccess,loginFailed} from "../../../redux/userRedux";
 import { useDispatch,useSelector  } from "react-redux";
+import Navbar from './../../Layout/NavBar';
 
 
 const AdminLogin2 = () => {
@@ -68,7 +69,12 @@ const authlogin=async(e)=>{
 
 
 return(
+  <>
+     <Navbar/>
+
   <div className="Dlogin">
+  
+   
   <ToastContainer />
   <div className="dlcont">
     <div className="side1 shadow-lg rounded-sm  ">
@@ -108,6 +114,7 @@ return(
 
 
   </div>
+    </>
 )
 }
 export default AdminLogin2;

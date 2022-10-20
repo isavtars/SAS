@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import "./Teacherlogin.css"
 
-import {tlogin} from "../../../redux/apiTCallls"
- import Aprofile from "../../../images/a.png"
+import {tlogin} from "../../../../redux/apiTCallls"
+ import Aprofile from "../../../../images/a.png"
+
+
 
 
 
 import { useDispatch } from 'react-redux';
+import Navbar from '../../../Layout/NavBar';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const Teacherlogin = () => {
@@ -14,6 +18,7 @@ const Teacherlogin = () => {
 
 const dispatch=useDispatch();
    const [input, setinput] = useState({})
+   const nagavation=useNavigate();
     
 const push=(e)=>{  
   setinput({...input,[e.target.name]:e.target.value})
@@ -24,11 +29,18 @@ const push=(e)=>{
     //loginappi
     const handleSubmit=(e)=>{
       e.preventDefault();
-      tlogin(dispatch,input,e)
+      tlogin(dispatch,input,e,nagavation)
+      nagavation("/tadmin")
     }
+
+
+   
   return (
+    <div>
+
+    <Navbar/>
     <div  style={{
-        height: "100vh",
+        height: "85vh",
         display: "flex",
         width:"100vw",
         alignItems: "center",
@@ -70,7 +82,7 @@ const push=(e)=>{
       <div className='flex justify-end'>
 
     
-       <span className='text-[#0998f8] mb-1 cursor-pointer'>forget password??<span className='text-orange-500'>click heare</span></span>
+       <span className='text-[#0998f8] mb-1 cursor-pointer'>forget password?? <Link to='/password-reset'><span className='text-orange-500' >click heare</span></Link></span>
   </div>
       <div className="divbtktelog  h-12 w-full flex justify-center items-center">
 <button  className="bg-[#0272f3] h-[100%] w-[20%] rounded-md text-white">
@@ -82,6 +94,7 @@ const push=(e)=>{
       
 
     </form>
+    </div>
     </div>
   )
 }

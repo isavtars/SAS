@@ -53,9 +53,12 @@ class TecherAdminController{
 
     //passwordreset
     async passwordresetww(req,res){
-       const email  = req.body.Email;
+     
+        const email=req.body.Email;
+      
+
   try {
-    const oldUser = await teachersmodels.findOne({ Email:email });
+    const oldUser = await teachersmodels.findOne({Email:email});
     if (!oldUser) {
       return res.json({ status: "User Not Exists!!" });
     }
@@ -78,8 +81,8 @@ class TecherAdminController{
     });
 
     var mailOptions = {
-      from: "bibekchhetri5678@gmail.com",
-      to: "thedebugarena@gmail.com",
+      from: "bibchhetri5678@gmail.com",
+      to: "asim@gmail.com",
       subject: "Password Reset",
       text: link,
     };

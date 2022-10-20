@@ -29,20 +29,7 @@ const storage = multer.diskStorage({
     //storage: storage = storage destructuring
   const upload = multer({ storage: storage })  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//this is adminworkfor the teachers
+// routes for the  adminworkfor the teachers
 router.get("/all",Validate,detailscontroller.getuser)
 
 
@@ -73,5 +60,26 @@ router.patch("/update/:id",Validate,upload.single("image"),(req,res) =>
    detailscontroller.updateuser(req,res,imageName)
 }
 )
+
+
+
+//routes for the adminn works on students
+
+
+//route for add students
+router.post("/addstudents",Validate,upload.single("image"),(req,res) =>
+{
+   detailscontroller.addingStudents(req,res,imageName)
+})
+
+
+//getsstudents
+router.get("/getstudents",detailscontroller.getsstudents)
+
+
+//router for students serch filter
+router.get("/studentssearchfilter",Validate,detailscontroller.studentssearchilter)
+
+
 
 export default router;

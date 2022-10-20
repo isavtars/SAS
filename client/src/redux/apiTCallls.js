@@ -3,12 +3,16 @@ import  swal  from 'sweetalert';
 
 //heare the all appi calle of teachesr admin
 
+
+
 import {
+
      tloginStart, tloginSuccess, tloginFailure, tlogout  
     } from "./userTeacherRedux";
 
 //login appi calls
-export const  tlogin=async(dispatch,user,e)=>{
+export const  tlogin=async(dispatch,user,e,nagavation)=>{
+    
     try{
 
         const response=await api.post('teacheradmin/login',{...user})
@@ -16,6 +20,7 @@ export const  tlogin=async(dispatch,user,e)=>{
         if(response.data.ttoken){
             e.target.reset();
         dispatch(tloginSuccess(response.data))
+         nagavation("/tadmin")
        
   swal({
   title: "sucess to login",

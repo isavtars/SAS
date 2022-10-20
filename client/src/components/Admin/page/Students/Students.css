@@ -1,3 +1,32 @@
 .students{
     padding: 0 1.1rem;
 }
+
+.saaa {
+    display: flex;
+
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.simgtablecell {
+    background-color: rgb(246, 241, 241);
+    height: 80px;
+    width: 80px;
+    border-radius: 10%;
+
+
+
+
+}
+
+.simgtablecell img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+
+
+}

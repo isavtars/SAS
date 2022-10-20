@@ -13,14 +13,43 @@ const studentsSchema= new mongoose.Schema({
         required:true,
         unique:true,
     },
+    ParentsName:{
+        type:String,
+        required:true,     
+    },
+
+    Address:{
+        type:String,
+        required:true,   
+    },
     DOB:{
         type: Date,
+        default:Date.now,
           required:true,
     },
 
-    GRADE:{
-          type:String,
+    Phonenumber:{
+        type:Number,
+        required:true,
+        
     },
+    Course:{
+          type:String,
+          required:true,
+    },
+
+    Semester:{
+          type:String,
+          required:true,
+    },
+
+    Branch:{
+          type:String,
+          required:true,
+    },
+
+
+
     image:{
         type:String
     }
