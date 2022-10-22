@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import Navbar from '../../../Layout/NavBar'
 import api from "../../.././service/api.js"
+import { useNavigate, Link } from 'react-router-dom';
 
 const Passwordreset = () => {
-
+ const navigate=useNavigate();
 
     const [input, setinput] = useState({});
     console.log(input)
@@ -14,56 +15,67 @@ setinput({...input,[e.target.name]:e.target.value})
     }
 
     
+    
+
+    
 
     const handleSubmit=async(e)=>{
          e.preventDefault();
+
+        if(input.value===""){
+          console.log("email required")
+        }
+        else{
         try{
          const response =await api.post("/teacheradmin/passwordreset",{...input})
-            console.log(response.data)
-                  console.log(response)
+            console.log(response.data.link)
+               
 
+            if(response.data.sucess){
+              //  <Link to={response.data.link}>
+
+              //  </Link>
+                e.target.reset();
+            }else{
+              console.log("you email verifactions faileds")
+            }
+        
         }catch(err){
             console.log(err)
         }
+      }
     }
 
   return (
     <>   <Navbar/>
-    <div  style={{
-        height: "85vh",
-        display: "flex",
-        width:"100vw",
-        alignItems: "center",
-        justifyContent: "center",
-      }} className="bg-[#f5f5f5] shadow-md">
+    <div className="bg-[#f5f5f5] h-[90vh] flex items-center justify-center shadow-md">
 
     <form onSubmit={handleSubmit} className="Tloginform  shadow-md">
 
-    <div className="profileAfdmlogin flex justify-center flex-col items-center mb-2">
+    <div className="profileAfdmlogin  p-5 shadow-sm  flex justify-center flex-col items-center mb-2">
        
-       <h1>reset assword</h1>
+       <h1 className='text-3xl text-[#480ebd] font-bold'>Enter you  Email</h1>
+      
 
     </div>
     
 
-     <div className="tUSERNME h-14 bg-gray-500 mb-2 w-full  ">
+     <div className="tUSERNME p-5 w-full  ">
+     <h1 className='text-xl text-[#480ebd] mb-2 font-bold'>Email</h1>
       <input
       
-         className="bg-[#e2e2ee]  rounded-sm shadow-inner text-xl text-black  outline-none h-[100%] w-[100%] px-1"
+         className="bg-[#cbcbdf]  rounded-sm shadow-inner text-xl text-black mb-5  outline-none  h-12 p-2 w-[100%] px-1"
         type="text"
-        placeholder="username"
+        placeholder="email to reset-password"
         onChange={push}
         name="Email"
       />
       </div>
 
-      <div className='flex justify-end'>
-
-    
-  </div>
-      <div className="divbtktelog  h-12 w-full flex justify-center items-center">
-<button  className="bg-[#0272f3] h-[100%] w-[20%] rounded-md text-white">
-        Login
+     
+      <div className="divbtktelog  h-10  w-full flex justify-center items-center">
+<button  className="bg-[#5117d7] h-[100%] w-[90%] p-2 rounded-md text-white">
+        submit
       </button>
       </div>
 

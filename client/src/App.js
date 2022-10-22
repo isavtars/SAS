@@ -21,6 +21,7 @@ import TADashboard from './components/AdminTeachersui/layout/TADashboard/TADashb
 import TADhome from './components/AdminTeachersui/layout/TADhome/TADhome';
 import Passwordreset from './components/AdminTeachersui/page/Passwordreset/Passwordreset';
 import TAStudents from './components/AdminTeachersui/page/TAStudents/TAStudents';
+import ForgetPassreset from './components/AdminTeachersui/page/ForgetPassreset/ForgetPassreset';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
     <>
  {/* //admin dashboards */}
 
+
    {
     
     admin ?
@@ -57,6 +59,8 @@ function App() {
 
         
         <Route path="/teacherlogin" element={tadmin  ? <Navigate to="/tadmin" replace /> :  <Teacherlogin />}  ></Route>
+            
+        
 
         {
           
@@ -84,6 +88,7 @@ function App() {
            <Route path='*' element={<Home404/>}></Route>
           <Route path='/services' element={<Services/>}> </Route>
      <Route path="/password-reset" element={<Passwordreset />}></Route>
+      <Route path="/forget-passwordreset/:id/:token" element={<ForgetPassreset />}></Route>
 
      
           <Route path="/adminlogin" element={<AdminLogin2 />}></Route>

@@ -60,30 +60,31 @@ class TecherAdminController{
 
   try {
     const oldUser = await teachersmodels.findOne({Email:email});
+    console.log(oldUser)
     if (!oldUser) {
       return res.json({ status: "User Not Exists!!" });
     }
     const secret = process.env.JWT_SECRET + oldUser.TPassword;
+
+    //add
+    if(secret){
     const token = jwt.sign({ email: oldUser.Email, id: oldUser._id }, secret, {
-      expiresIn: "5m",
+      expiresIn: "2m",
     });
-    const link = `http://localhost:8000/teacheradmin/reset-password/${oldUser._id}/${token}`;
+    const link = `http://localhost:3000/forget-passwordreset/${oldUser._id}/${token}`;
     var transporter = nodemailer.createTransport({
-        
-      service: "smtp.gmail.com",
-      secure:false,
+      service: "gmail",
+     
       auth: {
-        user: "bibchhetri@gmail.com",
-        pass: "#avatar0977#123456",
+        user: "isavatar0977@gmail.com",
+        pass: "qfrtidxlbdjocuxp",
       },
-      tls:{
-        rejectUnauthorized:false,
-      }
+     
     });
 
     var mailOptions = {
-      from: "bibchhetri5678@gmail.com",
-      to: "asim@gmail.com",
+      from: "isavatar0977@gmail.com",
+      to: "bibchhetri5678@gmail.com",
       subject: "Password Reset",
       text: link,
     };
@@ -96,7 +97,12 @@ class TecherAdminController{
       }
     });
     console.log(link);
-    res.send(link)
+    res.send({link,sucess:true,message:"email verifactions successfull"})
+  }else{
+  
+     res.send({sucess:false,message:"email verifactions failled"})
+  }
+    
   } catch (error) {
     res.send(err)
   }
@@ -107,6 +113,7 @@ class TecherAdminController{
     async resetpassword(req,res){
          const { id, token } = req.params;
   const  password  = req.body.Password;
+ 
 
   const oldUser = await teachersmodels.findOne({ _id: id });
   if (!oldUser) 
@@ -138,7 +145,7 @@ class TecherAdminController{
     //getresetpassword
     async getresetpassword(req,res){
          const { id, token } = req.params;
-  console.log(req.params);
+ 
  
   const oldUser = await teachersmodels.findOne({ _id: id });
   if (!oldUser) {
@@ -158,11 +165,11 @@ class TecherAdminController{
  
     //getstudentsbusemester for teacheradmin
     async getstudentsbusemester(req,res){
-      // res.send("hello")
+      
       const semq =req.query.semq;
-        // const {search}=req.query;
+      
       try{
-        console.log(req.user.classTeacherOf)
+      
 
 
         if(semq==req.user.classTeacherOf){
