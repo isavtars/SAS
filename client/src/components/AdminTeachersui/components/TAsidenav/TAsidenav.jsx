@@ -47,12 +47,12 @@ const TAsidenav = () => {
           </Link>
           <p className="title">LISTS</p>
 
-          <Link to="/tadmin" style={{ textDecoration: "none" }}>
+          {/* <Link to="/tadmin" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Teachers</span>
             </li>
-          </Link>
+          </Link> */}
 
 
           <Link to="/tadmin/students" style={{ textDecoration: "none" }}>
@@ -61,19 +61,22 @@ const TAsidenav = () => {
               <span>students</span>
             </li>
           </Link>
-          <Link to="/tadmin" style={{ textDecoration: "none" }}>
+          <Link to="/tadmin/attendence" style={{ textDecoration: "none" }}>
             <li>
               <StoreIcon className="icon" />
         
-              <span className=''>Attendence</span>
+              <span className=''> mark Attendence</span>
               
             </li>
           </Link>
-        
+
+          <Link to="/tadmin/allattendence" style={{ textDecoration: "none" }}>
+         
           <li>
             <LocalShippingIcon className="icon" />
-            <span>Report</span>
+            <span>Attendence Report</span>
           </li>
+          </Link>
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

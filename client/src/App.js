@@ -22,6 +22,8 @@ import TADhome from './components/AdminTeachersui/layout/TADhome/TADhome';
 import Passwordreset from './components/AdminTeachersui/page/Passwordreset/Passwordreset';
 import TAStudents from './components/AdminTeachersui/page/TAStudents/TAStudents';
 import ForgetPassreset from './components/AdminTeachersui/page/ForgetPassreset/ForgetPassreset';
+import Attendence from './components/AdminTeachersui/page/Attendence/Attendence';
+import AllatendenceReport from './components/AdminTeachersui/page/AllatendenceReport/AllatendenceReport';
 
 function App() {
 
@@ -109,6 +111,10 @@ function App() {
              <Route path='/tadmin'  element={<TADashboard />}>
           <Route index  element={<TADhome />} />
           <Route path="students"  element={<TAStudents />} />
+           <Route path="attendence"  element={<Attendence />} />
+            <Route path="allattendence"  element={<AllatendenceReport  />} />
+         
+         
          
            
            </Route>   

@@ -9,6 +9,7 @@ import connection from "./database/connection/conn.js";
 import  adminwtroute from "./router/adminwtRoutes.js"
 import adminroute from "./router/adminRoutes.js"
 import teacheradminrouter from "./router/teacherRoutes.js"
+import attendencerouter from "./router/atendenceRoutes.js"
 
 import bodyParser from "body-parser";
 import cors from "cors"
@@ -44,6 +45,8 @@ app.use("/admin",adminroute)
 //teachetadminRoutes
 app.use("/teacheradmin",teacheradminrouter)
 
+//for  attendencerouter
+app.use("/attendence",attendencerouter)
 
 
 
