@@ -29,7 +29,7 @@ const TAsidenav = () => {
 
 
   return (
-    <div className="tsidebar">
+    <div className="tsidebar sticky top-0">
       <div className="top">
         <Link to="/tadmin" style={{ textDecoration: "none" }}>
           <span className="logo text-white">Teacher admin</span>
@@ -91,6 +91,7 @@ const TAsidenav = () => {
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
           </li>
+          
           <li>
             <PsychologyOutlinedIcon className="icon" />
             <span>Logs</span>

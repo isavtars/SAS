@@ -29,7 +29,7 @@ const Asidenav = () => {
 
 
   return (
-    <div className="sidebar">
+    <div className="sidebar sticky top-0">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo text-white">SAS admin</span>
@@ -70,10 +70,7 @@ const Asidenav = () => {
             </li>
           </Link>
         
-          <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li>
+         
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

@@ -165,7 +165,7 @@ class TecherAdminController{
  
     //getstudentsbusemester for teacheradmin
     async getstudentsbusemester(req,res){
-      
+
       const semq =req.query.semq;
       
       try{
@@ -186,7 +186,7 @@ class TecherAdminController{
         }
 
       }catch(err){
-        res.send(err)
+        // res.send(err)
       }
     }
 

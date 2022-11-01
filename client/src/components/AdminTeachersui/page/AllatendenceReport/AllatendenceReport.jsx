@@ -11,7 +11,7 @@ import { useSelector} from 'react-redux';
 import { GiCogLock } from 'react-icons/gi';
 
 
- let  todydate= new Date().toLocaleString().split(',')[0];
+ let todayday= new Date().toLocaleString().split(',')[0];
 
 const AllatendenceReport = () => {
 
@@ -22,6 +22,8 @@ const AllatendenceReport = () => {
   const navigate=useNavigate();
   
  const[users,setusers]=useState([])
+
+ console.log(users)
 
  
 
@@ -98,19 +100,25 @@ const AllatendenceReport = () => {
     <TableCell style={styles}>Roll.no</TableCell>
     <TableCell style={styles}>Date</TableCell>
      <TableCell style={styles}>Status</TableCell>
-    
-     
-     
-    
-   
     </TableRow>
   
     
-  { users.length>0?users.map((data,index)=>{
-    let  date= new Date().toLocaleString().split(',')[0];
+  {
+     
+    users.length>0?users.map((data,index)=>{
+    
     //"2/18/2016"
+   
+      let daaaate=data.Date
+       console.log(todayday)
+      console.log(daaaate)
+    if(todayday === daaaate){
+        console.log("today date is true")
+    }else{ console.log("false")}
 
-     console.log(data.Attend)
+    
+
+   
    
     return<TableRow key={index} style={{margin:""}}>
     <TableCell >{index+1}</TableCell>
@@ -119,7 +127,7 @@ const AllatendenceReport = () => {
     
     
     <TableCell>{data.RollNumber}</TableCell>
-     <TableCell>{todydate}</TableCell>
+     <TableCell>{data.Date}</TableCell>
      <TableCell >
     
  {data.Attend?
@@ -141,6 +149,9 @@ const AllatendenceReport = () => {
   
     
    }):"attendta not done"
+     
+     
+  
    }
   
   

@@ -9,7 +9,7 @@ const TADashboard = () => {
   return (
     <div className='TADashboard'>
  
- <div className='Asidenav'>
+ <div className='Asidenav '>
  <TAsidenav />
  </div>
 
