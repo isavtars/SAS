@@ -9,6 +9,7 @@ import {Link, useNavigate } from "react-router-dom"
 import { useSelector} from 'react-redux';
  import swal from 'sweetalert';
 import { Children } from 'react'
+import { GiCogLock } from 'react-icons/gi';
 
 
  let  todydate= new Date().toLocaleString().split(',')[0];
@@ -21,13 +22,9 @@ const Attendence = () => {
 
   const navigate=useNavigate();
   
- const[users,setusers]=useState([])
 
 
 
-
-//  const [Attendence,setAttendence]=useState(false)
-//  console.log(Attendence)
 
 
  //to set todaysttendence done or not
@@ -35,7 +32,8 @@ const Attendence = () => {
  console.log(todayAttendence)
 
  //to make attendence reports
-const [Status, setStatus] = useState('')
+const [Status, setStatus] = useState(false)
+console.log(Status)
 
  
 
@@ -88,33 +86,6 @@ const [Status, setStatus] = useState('')
 
 
 
- // make ateendence 
- //main concepts of projects
- const ateendence=async (data,attendence)=>{
-
-  try{
- const response =await api.post("/attendence/attendence",{
-  Students:data._id,
-  Sname:data.studentName,
-  RollNumber:data.RollNumber,
-  Attend:attendence,
-  Date: todydate,
-   Semester:data.Semester
-
-  
-  
- })
- 
-
-console.log(response.data.status)
-
-setStatus(response.data.status)
-
-
-  }catch(err){
-  console.log(err)
-  }
- }
 
 
   const styles={
@@ -124,9 +95,68 @@ setStatus(response.data.status)
  }
  
 
-const handlesunmot=(e)=>{
- e.preventDefault();
-}
+//selectbox
+
+
+ const[users,setusers]=useState([])
+
+  const handleChange = (e) => {
+    const { name, checked } = e.target;
+    console.log(name,checked)
+    if (name === "allSelect") {
+      let tempUser = users.map((user) => {
+        return { ...user, isChecked: checked };
+      });
+      setusers(tempUser);
+    } else {
+
+      let temusers= users.map((user)=>{
+       console.log(user.studentName)
+      return user.studentName === name ?{...user, isChecked:checked}:user
+      
+    })
+ setusers(temusers);
+
+    }
+
+
+   
+  };
+
+ console.log(users)
+  
+ // make ateendence 
+ //main concepts of projects
+ const ateendence=async(e)=>{
+  console.log(users)
+  e.preventDefault();
+  try{
+
+    users.map(async (data,index)=>{
+const response = await api.post("/attendence/attendence",{
+  Students:data._id,
+  Sname:data.studentName,
+  RollNumber:data.RollNumber,
+  Date: todydate,
+   Semester:data.Semester,
+   Attend:data.isChecked,
+
+ })
+
+       console.log(response.data)
+setStatus(response.data.sucess)
+    })
+   
+
+ 
+  }catch(err){
+  console.log(err)
+  }
+ }
+
+ 
+
+
   return (
     <div>
     <header className='bg-[#cad3e4]  h-16 flex   text-xl font-bold capitalize  text-[#292929] items-center justify-center mb-1'>
@@ -139,7 +169,7 @@ const handlesunmot=(e)=>{
 
     
     {/* <form> */}
-    <form  onSubmit={()=>handlesunmot()}>
+    <form  onSubmit={ateendence}>
     <TableContainer style={{"backgroundColor":"white",zIndex:"-100"}}>
     <Table>
     <TableHead>
@@ -151,14 +181,30 @@ const handlesunmot=(e)=>{
     <TableCell style={styles}>Studentname</TableCell>
     <TableCell style={styles}>Roll.no</TableCell>
     <TableCell style={styles}>Date</TableCell>
-     <TableCell style={styles}>Status</TableCell>
+     <TableCell style={styles}>
+     <div className="form-check">
+     
 
+     {!todayAttendence?
+          <input
+            type="checkbox"
+            className="form-check-input"
+            name="allSelect"
+            checked={!users.some((user) => user?.isChecked !== true)}
+            onChange={handleChange}
+          />:<button className='bg-[#0376d3] p-2 text-[white] rounded-md' >ajako bhayo</button>
+     }
+     
+          <label className="form-check-label ms-2">{!todayAttendence?"Attendence Allselects":""}</label>
+        </div>
+</TableCell>
     </TableRow>
 
 
   { users.map((data,index)=>{
     let  date= new Date().toLocaleString().split(',')[0];
-    //"2/18/2016"
+    console.log(data.isChecked
+)
     return<TableRow key={index} style={{margin:""}}>
     <TableCell >{index+1}</TableCell>
     <TableCell > <div className='simgtablecell shadow-md bg-slate-900'><img src={data.image} alt="" /></div></TableCell>
@@ -167,34 +213,56 @@ const handlesunmot=(e)=>{
      <TableCell>{todydate}</TableCell>
      <TableCell >
      <div className="statussss flex cursor-pointer">
-
-    
-         {!todayAttendence? <button className='bg-[#007618] mx-1 p-4 text-[white] rounded-sm' onClick={()=>ateendence(data, true )}>p</button>:Status?<button>present</button>:<button>absent</button>
-         }
-    
-           {
-            !todayAttendence?
-            <button className='bg-[#fb0303] mx-1 p-4 text-[white] rounded-sm' onClick={()=>ateendence(data, false)}>A</button>:!Status?<button>present</button>:<button>absent</button>
-           }
-
+          <div className="form-check" key={index}>
+          {
+            !todayAttendence ?
+           
+            <input
+              type="checkbox"
+              className="form-check-input"
+              name={data.studentName}
+              checked={data?.isChecked || false}
+              onChange={handleChange}
+              value={data.StudentsName}
+            />:Status?<button className='bg-green-500 p-3 text-[white] rounded-sm '>present</button>:<button className='bg-[red] p-3 text-white rounded-sm '>absent</button>
+          }
+            
+            <span className=" mx-2 form-check-label ms-2">{
+              todayAttendence ?"":
+              data.isChecked?<button className='bg-green-500 p-3 text-[white] rounded-sm '>present</button>:<button className='bg-[red] p-3 text-white rounded-sm '>absent</button>}</span>
+</div>
 
      </div>
+
+    
    
   
      </TableCell>  
     </TableRow>
+
+    
+
+    
+
+    
    })
    }
     </TableHead>
     </Table>
+   
     </TableContainer>
+
+   <div className="submitbtn  flex justify-center items-center px-5 mx-2 cursor-pointer bg-[#df3cf5] text-white h-10">
+
+    <input type="submit"  disabled={todayAttendence}/>
+    </div>
     </form>
-  
-  
+
     </div>
   )
   
 }
+
 
 export default Attendence
 

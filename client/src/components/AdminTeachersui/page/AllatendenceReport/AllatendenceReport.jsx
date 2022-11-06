@@ -35,8 +35,6 @@ const AllatendenceReport = () => {
   const getuser=async()=>{
       try{
        const response=await api.get(`/attendence/viewattendence?semq=${classTeacherOf}`,{
-
-         
           headers:{         
             "Content-Type": "multipart/form-data",
             ttoken:ttoken,
@@ -46,14 +44,11 @@ const AllatendenceReport = () => {
        
        console.log(response.data)
        setusers(response.data)
-     
-    
       }catch(e){
           console.log("error while get data",e)
       }
      }
- getuser()
- 
+ getuser() 
  console.log(users)
  }, [])
 
@@ -131,19 +126,9 @@ const AllatendenceReport = () => {
      <TableCell >
     
  {data.Attend?
- 
     <button className='bg-[green] p-3 text-[white] rounded-sm '>present</button>:
-     <button className='bg-[red] p-3 text-white rounded-sm '>absent</button>
+     <button className='bg-[red] p-3 text-white rounded-sm '>    absent+ </button>
  }
-    
-    
-
-
-
-
-    
- 
-
      </TableCell>
     </TableRow>
   

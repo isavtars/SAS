@@ -33,6 +33,7 @@ const atttSchema=new mongoose.Schema({
     Attend:{
         type:Boolean,
         required:true,
+        
        },
   
 })
